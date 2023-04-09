@@ -1,8 +1,7 @@
-﻿using System.Diagnostics;
-using DotNetEnv;
+﻿using DotNetEnv;
 
 
-[DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
+
 class Program
 {
   static void Main(string[] args)
@@ -13,8 +12,5 @@ class Program
     atm.Run();
   }
 
-  private string GetDebuggerDisplay()
-  {
-    return ToString();
-  }
+
 }

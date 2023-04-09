@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
 public class CardHolder
@@ -49,7 +47,7 @@ public class ATMSystem
       }
       reader.Close();
 
-      Console.WriteLine("Welcome to SimpleATM");
+      Console.WriteLine("Welcome to SSE-BANK ATM");
       Console.WriteLine("Please insert your debit card:");
 
       CardHolder currentUser = AuthenticateUser(cardHolders);
@@ -98,14 +96,15 @@ public class ATMSystem
   {
     while (true)
     {
-      string debitcardNum = Console.ReadLine();
+      string? debitcardNum = Console.ReadLine();
 
-      CardHolder currentUser = cardHolders.Find(a => a.CardNum == debitcardNum);
+      CardHolder? currentUser = cardHolders.Find(a => a.CardNum == debitcardNum);
 
       if (currentUser != null)
       {
         Console.WriteLine("Please enter your PIN:");
-        int userPin = int.Parse(Console.ReadLine());
+        int v = Convert.ToInt32(Console.ReadLine());
+        int userPin = v;
 
         if (currentUser.Pin == userPin)
         {
@@ -126,7 +125,7 @@ public class ATMSystem
   private void Deposit(CardHolder currentUser)
   {
     Console.WriteLine("How much money would you like to deposit?");
-    double deposit = Double.Parse(Console.ReadLine());
+    double deposit = Convert.ToInt32(Console.ReadLine());
     currentUser.Balance += deposit;
     UpdateBalance(currentUser);
     Console.WriteLine($"Thank you for depositing your money. Your current balance is: {currentUser.Balance}");
@@ -135,7 +134,7 @@ public class ATMSystem
   private void Withdraw(CardHolder currentUser)
   {
     Console.WriteLine("How much money would you like to withdraw?");
-    double withdrawal = Double.Parse(Console.ReadLine());
+    double withdrawal = Convert.ToInt32(Console.ReadLine());
 
     if (currentUser.Balance < withdrawal)
     {
