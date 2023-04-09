@@ -1,10 +1,11 @@
-﻿using DotNetEnv;
+﻿using ATMApplication;
+using DotNetEnv;
 
 
 
 class Program
 {
-  static void Main(string[] args)
+  static void Main()
   {
     Env.Load();
     string connectionString = $"server={Environment.GetEnvironmentVariable("DB_HOST")};user={Environment.GetEnvironmentVariable("DB_USER")};password={Environment.GetEnvironmentVariable("DB_PASSWORD")};database={Environment.GetEnvironmentVariable("DB_DATABASE")};";
