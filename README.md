@@ -66,3 +66,64 @@ INSERT INTO `cardholders` (`cardnum`, `pin`, `firstname`, `lastname`, `balance`)
 ## Usage
 
 When you run the application, you will see a welcome message and a prompt to insert your debit card. Enter the card number for one of the test accounts in the `cardholders` table
+
+## Flow Chart
+
+![Alt text](ATM-Flowchart.jpeg)
+
+## Psudocode
+
+```javascript
+function AuthenticateUser(cardHolders):
+    while true:
+        // Prompt the user to enter their debit card number
+        debitcardNum = read input from user
+
+        // Find the card holder object with a matching card number
+        currentUser = cardHolders.Find(a => a.CardNum == debitcardNum)
+
+        if currentUser is not null:
+            // Prompt the user to enter their PIN
+            userPin = read input from user
+
+            if currentUser.Pin == userPin:
+                // Return the authenticated user
+                return currentUser
+            else:
+                // Incorrect PIN, prompt the user to try again
+                display "Incorrect PIN. Please try again."
+        else:
+            // Card not recognised, prompt the user to try again
+            display "Card not recognised. Please try again."
+
+function Deposit(currentUser):
+    // Prompt the user to enter the amount to deposit
+    deposit = read input from user
+
+    // Update the user's balance
+    currentUser.Balance += deposit
+    UpdateBalance(currentUser)
+
+    // Display the updated balance
+    display "Thank you for depositing your money. Your current balance is: " + currentUser.Balance
+
+function Withdraw(currentUser):
+    // Prompt the user to enter the amount to withdraw
+    withdrawal = read input from user
+
+    if currentUser.Balance < withdrawal:
+        // Insufficient balance, display an error message
+        display "Insufficient balance :("
+    else:
+        // Update the user's balance
+        currentUser.Balance -= withdrawal
+        UpdateBalance(currentUser)
+
+        // Display the updated balance
+        display "You're good to go! Thank you. New balance: " + currentUser.Balance
+
+function CheckBalance(currentUser):
+    // Display the user's current balance
+    display "Current balance: " + currentUser.Balance
+
+```
