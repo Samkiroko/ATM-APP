@@ -61,7 +61,7 @@ INSERT INTO `cardholders` (`cardnum`, `pin`, `firstname`, `lastname`, `balance`)
 
 ```
 
-6. Build and run application.
+5. Build and run application.
 
 ## Usage
 
