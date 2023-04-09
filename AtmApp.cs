@@ -29,7 +29,7 @@ public class ATMSystem
 
   public void Run()
   {
-    List<CardHolder> cardHolders = new List<CardHolder>();
+    List<CardHolder> cardHolders = new();
 
     try
     {
@@ -37,12 +37,12 @@ public class ATMSystem
 
       // Retrieve card holders from database
       string query = "SELECT * FROM cardholders";
-      MySqlCommand command = new MySqlCommand(query, connection);
+      MySqlCommand command = new(query, connection);
       MySqlDataReader reader = command.ExecuteReader();
 
       while (reader.Read())
       {
-        CardHolder ch = new CardHolder(reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetString(4), reader.GetDouble(5));
+        CardHolder ch = new(reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetString(4), reader.GetDouble(5));
         cardHolders.Add(ch);
       }
       reader.Close();
@@ -92,7 +92,7 @@ public class ATMSystem
     }
   }
 
-  private CardHolder AuthenticateUser(List<CardHolder> cardHolders)
+  private static CardHolder AuthenticateUser(List<CardHolder> cardHolders)
   {
     while (true)
     {
@@ -148,7 +148,7 @@ public class ATMSystem
     }
   }
 
-  private void CheckBalance(CardHolder currentUser)
+  private static void CheckBalance(CardHolder currentUser)
   {
     Console.WriteLine($"Current balance: {currentUser.Balance}");
   }
@@ -156,11 +156,11 @@ public class ATMSystem
   private void UpdateBalance(CardHolder currentUser)
   {
     string query = $"UPDATE cardholders SET balance = {currentUser.Balance} WHERE cardnum = '{currentUser.CardNum}'";
-    MySqlCommand command = new MySqlCommand(query, connection);
+    MySqlCommand command = new(query, connection);
     command.ExecuteNonQuery();
   }
 
-  private void PrintOptions()
+  private static void PrintOptions()
   {
     Console.WriteLine("Please choose one of the following options:");
     Console.WriteLine("1. Deposit");
@@ -169,7 +169,7 @@ public class ATMSystem
     Console.WriteLine("4. Exit");
   }
 
-  private int GetOption()
+  private static int GetOption()
   {
     int option;
 
