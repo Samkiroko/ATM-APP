@@ -25,41 +25,40 @@ To set up the application, follow these steps:
 
 2. Create .env file and add the mysql details
 
-```csharp
-DB_HOST=localhost
-DB_USER=username
-DB_PASSWORD=password
-DB_DATABASE=database
-
-```
+   ```csharp
+   DB_HOST=localhost
+   DB_USER=username
+   DB_PASSWORD=password
+   DB_DATABASE=database
+   ```
 
 3. Open MySQL Workbench and create a new schema called atm. Run the following SQL script to create the `cardholders` table:
 
-```sql
-CREATE TABLE `cardholders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cardnum` varchar(16) NOT NULL,
-  `pin` int(4) NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `balance` double NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+   ```sql
+   CREATE TABLE `cardholders` (
+     `id` int(11) NOT NULL AUTO_INCREMENT,
+     `cardnum` varchar(16) NOT NULL,
+     `pin` int(4) NOT NULL,
+     `firstname` varchar(50) NOT NULL,
+     `lastname` varchar(50) NOT NULL,
+     `balance` double NOT NULL,
+     PRIMARY KEY (`id`)
+   ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-```
+   ```
 
 4. Insert some test data into the `cardholders` table using the following SQL script:
 
-```sql
-INSERT INTO `cardholders` (`cardnum`, `pin`, `firstname`, `lastname`, `balance`) VALUES
-('4532772818527395', 1234, 'Samuel', 'Njenga', 10000.00),
-('4532772818527595', 4567, 'Joseph', 'Kimani', 10000.00),
-('4532772818527844', 8011, 'look', 'Sharma', 10000.00),
-('4532772818527145', 9119, 'Iren', 'puri', 10000.00),
-('4532772818527101', 8055, 'Debby', 'Naeku', 10000.00),
-('4532772818527001', 9289, 'joy', 'Lisa', 10000.00);
+   ```sql
+   INSERT INTO `cardholders` (`cardnum`, `pin`, `firstname`, `lastname`, `balance`) VALUES
+   ('4532772818527395', 1234, 'Samuel', 'Njenga', 10000.00),
+   ('4532772818527595', 4567, 'Joseph', 'Kimani', 10000.00),
+   ('4532772818527844', 8011, 'look', 'Sharma', 10000.00),
+   ('4532772818527145', 9119, 'Iren', 'puri', 10000.00),
+   ('4532772818527101', 8055, 'Debby', 'Naeku', 10000.00),
+   ('4532772818527001', 9289, 'joy', 'Lisa', 10000.00);
 
-```
+   ```
 
 5. Build and run application.
 
